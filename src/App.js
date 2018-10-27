@@ -67,15 +67,18 @@ class App extends Component {
          }
          else if(rc*4>ac+cc)
          {
-         ac=ac+1;
+         ac=ac;
          cc=0;
+       }
+       else{
+         ac=ac+1;
        }
      }
    }
     if(type=="adult"){
       if(rc*4>ac+cc){
         ac=ac+1;
-        cc=0;
+
       }
       console.log(type);
     }
@@ -103,21 +106,22 @@ class App extends Component {
      <tbody>
       <tr>
       <td>Rooms</td>
-      <td><button onClick={this.minus.bind(this,"room")}><img className="icon" src={minus}/></button></td>
+      <td><button disabled={this.state.roomcount==1} onClick={this.minus.bind(this,"room")}><span style={{color:this.state.roomcount==1?"red":"blue"}} class="glyphicon glyphicon-minus"></span></button></td>
       <td>{this.state.roomcount}</td>
-      <td><button onClick={this.plus.bind(this,"room")}><img className="icon" src={plus}/></button></td>
+      <td><button disabled={this.state.roomcount==5} onClick={this.plus.bind(this,"room")}><span style={{color:this.state.roomcount==5?"red":"blue"}}
+      class="glyphicon glyphicon-plus"></span></button></td>
      </tr>
       <tr>
       <td>Adult</td>
-      <td><button onClick={this.minus.bind(this,"adult")}><img className="icon" src={minus}/></button></td>
+      <td><button disabled={this.state.adultcount==1} onClick={this.minus.bind(this,"adult")}><span style={{color:this.state.adultcount==1?"red":"blue"}} class="glyphicon glyphicon-minus"></span></button></td>
       <td>{this.state.adultcount}</td>
-      <td><button onClick={this.plus.bind(this,"adult")}><img className="icon" src={plus}/></button></td>
+      <td><button disabled={this.state.roomcount*4<=this.state.adultcount+this.state.childcount} onClick={this.plus.bind(this,"adult")}><span style={{color:this.state.roomcount*4<=this.state.adultcount+this.state.childcount?"red":"blue"}} class="glyphicon glyphicon-plus"></span></button></td>
       </tr>
       <tr>
       <td>Children</td>
-      <td><button onClick={this.minus.bind(this,"child")}><img className="icon" src={minus}/></button></td>
+      <td><button disabled={this.state.childcount==0} onClick={this.minus.bind(this,"child")}><span style={{color:this.state.childcount==0?"red":"blue"}} class="glyphicon glyphicon-minus"></span></button></td>
       <td>{this.state.childcount}</td>
-      <td><button onClick={this.plus.bind(this,"child")}><img className="icon" src={plus}/></button></td>
+      <td><button disabled={this.state.roomcount*4<=this.state.adultcount+this.state.childcount} onClick={this.plus.bind(this,"child")}><span style={{color:this.state.roomcount*4<=this.state.adultcount+this.state.childcount?"red":"blue"}} class="glyphicon glyphicon-plus"></span></button></td>
       </tr>
       </tbody>
       </table>
