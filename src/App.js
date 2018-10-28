@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import minus from './images/minus.png'
-import plus from './images/plus.png'
+import room from './images/room.png'
 import adult from './images/adult.jpg'
 import child from './images/childern.png'
 
@@ -105,20 +104,20 @@ class App extends Component {
       <table className="table table-striped">
      <tbody>
       <tr>
-      <td>Rooms</td>
+      <td><img className="icon" src={room}/>Rooms</td>
       <td><button disabled={this.state.roomcount==1} onClick={this.minus.bind(this,"room")}><span style={{color:this.state.roomcount==1?"red":"blue"}} class="glyphicon glyphicon-minus"></span></button></td>
       <td>{this.state.roomcount}</td>
       <td><button disabled={this.state.roomcount==5} onClick={this.plus.bind(this,"room")}><span style={{color:this.state.roomcount==5?"red":"blue"}}
       class="glyphicon glyphicon-plus"></span></button></td>
      </tr>
       <tr>
-      <td>Adult</td>
+      <td><img className="icon" src={adult}/>Adult</td>
       <td><button disabled={this.state.adultcount==1} onClick={this.minus.bind(this,"adult")}><span style={{color:this.state.adultcount==1?"red":"blue"}} class="glyphicon glyphicon-minus"></span></button></td>
       <td>{this.state.adultcount}</td>
       <td><button disabled={this.state.roomcount*4<=this.state.adultcount+this.state.childcount} onClick={this.plus.bind(this,"adult")}><span style={{color:this.state.roomcount*4<=this.state.adultcount+this.state.childcount?"red":"blue"}} class="glyphicon glyphicon-plus"></span></button></td>
       </tr>
       <tr>
-      <td>Children</td>
+      <td><img className="icon" src={child}/>Children</td>
       <td><button disabled={this.state.childcount==0} onClick={this.minus.bind(this,"child")}><span style={{color:this.state.childcount==0?"red":"blue"}} class="glyphicon glyphicon-minus"></span></button></td>
       <td>{this.state.childcount}</td>
       <td><button disabled={this.state.roomcount*4<=this.state.adultcount+this.state.childcount} onClick={this.plus.bind(this,"child")}><span style={{color:this.state.roomcount*4<=this.state.adultcount+this.state.childcount?"red":"blue"}} class="glyphicon glyphicon-plus"></span></button></td>
